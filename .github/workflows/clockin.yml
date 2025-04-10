@@ -2,7 +2,7 @@ name: Clock In 🕘
 
 on:
   schedule:
-  - cron: 20 01 * * 1-5
+  - cron: '30 00 * * 1-5' 
 
 concurrency:
   group: clockin
