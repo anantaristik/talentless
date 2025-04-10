@@ -41,9 +41,13 @@ jobs:
         run: |
           echo "EMAIL: $TALENTLESS_EMAIL"
           echo "LAT: $TALENTLESS_LAT"
+          echo "LNG: $TALENTLESS_LNG"
+          echo "CAL: $TALENTLESS_PERSONAL_CALENDAR_LINK"
         env:
           TALENTLESS_EMAIL: ${{ secrets.TALENTLESS_EMAIL }}
           TALENTLESS_LAT: ${{ secrets.TALENTLESS_LAT }}
+          TALENTLESS_LNG: ${{ secrets.TALENTLESS_LNG }}
+          TALENTLESS_PERSONAL_CALENDAR_LINK: ${{ secrets.TALENTLESS_PERSONAL_CALENDAR_LINK }}
 
       - name: Running action 💨
         run: node --no-warnings index.ts -p ${{ inputs.action }}
