@@ -52,8 +52,8 @@ jobs:
           TALENTLESS_EMAIL: ${{ secrets.TALENTLESS_EMAIL }}
           TALENTLESS_PASSWORD: ${{ secrets.TALENTLESS_PASSWORD }}
           TALENTLESS_PERSONAL_CALENDAR_LINK: ${{ secrets.TALENTLESS_PERSONAL_CALENDAR_LINK }}
-          TALENTLESS_LAT: "106.87375988135086"
-          TALENTLESS_LNG: "-6.168104328353934"
+          TALENTLESS_LAT: "-6.168104328353934"
+          TALENTLESS_LNG: "106.87375988135086"
 
       - name: Notify Errors 🚨
         if: ${{ failure() }}
