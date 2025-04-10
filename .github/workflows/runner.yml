@@ -27,13 +27,24 @@ jobs:
     steps:
       - name: Checkout code 📁
         uses: actions/checkout@v4
+
       - name: Setup NodeJS 💻
         uses: actions/setup-node@v4
         with:
           node-version-file: ".tool-versions"
           cache: "yarn"
+
       - name: Install dependencies 📦
         run: yarn install --frozen-lockfile
+
+      - name: Debug env vars 🐞
+        run: |
+          echo "EMAIL: $TALENTLESS_EMAIL"
+          echo "LAT: $TALENTLESS_LAT"
+        env:
+          TALENTLESS_EMAIL: ${{ secrets.TALENTLESS_EMAIL }}
+          TALENTLESS_LAT: ${{ secrets.TALENTLESS_LAT }}
+
       - name: Running action 💨
         run: node --no-warnings index.ts -p ${{ inputs.action }}
         env:
@@ -43,6 +54,7 @@ jobs:
           TALENTLESS_PERSONAL_CALENDAR_LINK: ${{ secrets.TALENTLESS_PERSONAL_CALENDAR_LINK }}
           TALENTLESS_LAT: ${{ secrets.TALENTLESS_LAT }}
           TALENTLESS_LNG: ${{ secrets.TALENTLESS_LNG }}
+
       - name: Notify Errors 🚨
         if: ${{ failure() }}
         run: |
@@ -51,4 +63,3 @@ jobs:
                -H "Tags: rotating_light,talentless" \
                -d "The runner workflow has failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\nError: ${{ steps.*.outcome }}\n\nDetails: ${{ steps.*.conclusion }}" \
                https://ntfy.sh/${{ secrets.NTFY_TOPIC }}
-
