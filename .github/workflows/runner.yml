@@ -23,6 +23,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
+    environment: talentless
     steps:
       - name: Checkout code 📁
         uses: actions/checkout@v4
