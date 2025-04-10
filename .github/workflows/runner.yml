@@ -40,13 +40,9 @@ jobs:
       - name: Debug env vars 🐞
         run: |
           echo "EMAIL: $TALENTLESS_EMAIL"
-          echo "LAT: $TALENTLESS_LAT"
-          echo "LNG: $TALENTLESS_LNG"
           echo "CAL: $TALENTLESS_PERSONAL_CALENDAR_LINK"
         env:
           TALENTLESS_EMAIL: ${{ secrets.TALENTLESS_EMAIL }}
-          TALENTLESS_LAT: ${{ secrets.TALENTLESS_LAT }}
-          TALENTLESS_LNG: ${{ secrets.TALENTLESS_LNG }}
           TALENTLESS_PERSONAL_CALENDAR_LINK: ${{ secrets.TALENTLESS_PERSONAL_CALENDAR_LINK }}
 
       - name: Running action 💨
@@ -56,8 +52,8 @@ jobs:
           TALENTLESS_EMAIL: ${{ secrets.TALENTLESS_EMAIL }}
           TALENTLESS_PASSWORD: ${{ secrets.TALENTLESS_PASSWORD }}
           TALENTLESS_PERSONAL_CALENDAR_LINK: ${{ secrets.TALENTLESS_PERSONAL_CALENDAR_LINK }}
-          TALENTLESS_LAT: ${{ secrets.TALENTLESS_LAT }}
-          TALENTLESS_LNG: ${{ secrets.TALENTLESS_LNG }}
+          TALENTLESS_LAT: "106.87375988135086"
+          TALENTLESS_LNG: "-6.168104328353934"
 
       - name: Notify Errors 🚨
         if: ${{ failure() }}
